@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en" manifest="cache.appcache">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>ALEX GAMING</title>
+    <style>
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        min-height: 100%;
+        background: #080910;
+        color: #d5d8e8;
+        font:
+          15px/1.45 "Segoe UI",
+          system-ui,
+          sans-serif;
+      }
+      #brand {
+        position: relative;
+        text-align: center;
+        padding: 8px 10px;
+        background: #0b0d18;
+        border-bottom: 1px solid #27213d;
+        box-shadow: 0 3px 18px rgba(34, 211, 238, 0.06);
+      }
+      #brand img {
+        width: 28px;
+        height: 28px;
+        margin-right: 8px;
+        border-radius: 50%;
+        vertical-align: middle;
+      }
+      .brand-mark {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 28px;
+        height: 28px;
+        margin-right: 8px;
+        border-radius: 8px;
+        vertical-align: middle;
+        color: #ffffff;
+        font-size: 15px;
+        font-weight: 900;
+        background: linear-gradient(135deg, #22d3ee, #a855f7);
+        box-shadow: 0 0 14px rgba(168, 85, 247, 0.35);
+      }
+      #brand b {
+        font-size: 15px;
+        font-weight: 700;
+        letter-spacing: 0.18em;
+        color: #e6ebf2;
+        vertical-align: middle;
+      }
+
+      /* running: a spinner under the brand. jb.js sets body.done / body.fail / body.log. */
+      #spin {
+        position: fixed;
+        top: calc(50% + 20px);
+        left: 50%;
+        width: 46px;
+        height: 46px;
+        margin: -23px 0 0 -23px;
+        border: 4px solid #27213d;
+        border-top-color: #22d3ee;
+        border-radius: 50%;
+        animation: spin 0.9s linear infinite;
+      }
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+      #msg {
+        position: fixed;
+        top: 50%;
+        left: 0;
+        right: 0;
+        transform: translateY(-50%);
+        text-align: center;
+        font-size: 16px;
+        letter-spacing: 0.5px;
+        display: none;
+      }
+      #wrap {
+        padding: 0;
+      }
+      #state,
+      #out {
+        display: none;
+      }
+
+      body.done #spin {
+        display: none;
+      }
+      body.fail #spin {
+        display: none;
+      }
+      body.fail #msg {
+        display: block;
+      }
+      body.done #msg {
+        display: block;
+        color: #a855f7;
+        font-weight: 700;
+        letter-spacing: 2px;
+      }
+
+      /* ?log=1 -- the full step log, styled like the landing. */
+      body.log #spin,
+      body.log #msg {
+        display: none;
+      }
+      body.log #wrap {
+        padding: 14px 18px;
+      }
+      body.log #state {
+        display: block;
+        font-size: 22px;
+        font-weight: 700;
+        margin: 0 0 8px;
+      }
+      body.log #out {
+        display: block;
+        white-space: pre-wrap;
+        font:
+          12px/1.45 Consolas,
+          monospace;
+        background: #11151b;
+        border: 1px solid #27213d;
+        border-radius: 5px;
+        padding: 10px 12px;
+        height: calc(100vh - 141px);
+        overflow-y: auto;
+      }
+      .ok {
+        color: #a855f7;
+      }
+      .bad {
+        color: #fb7185;
+      }
+      .warn {
+        color: #fbbf24;
+      }
+      .safe {
+        color: #a855f7;
+      }
+      .danger {
+        color: #fb7185;
+      }
+      code {
+        color: #67e8f9;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="brand">
+      <span class="brand-mark" aria-hidden="true">A</span>
+<b>PS4 JAILBREAK 13.52</b>
+    </div>
+    <div id="spin"></div>
+    <div id="msg">Restart your console</div>
+    <div id="wrap">
+      <div id="state"></div>
+      <div id="out"></div>
+    </div>
+    <script type="module">
+      import "./jb.js?v=19";
+    </script>
+  </body>
+</html>
